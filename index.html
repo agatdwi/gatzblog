@@ -10,90 +10,137 @@
       document.addEventListener("DOMContentLoaded", () => AOS.init());
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       body {
-        background: #0f0f1a;
+        background: radial-gradient(circle at top, #0f0f1a, #090912);
         color: #fff;
         font-family: 'Segoe UI', sans-serif;
       }
 
       .card {
-        background: linear-gradient(145deg, #1e1e2f, #2d2d44);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        transition: transform 0.3s, box-shadow 0.3s;
+        background: rgba(30, 30, 50, 0.5);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 25px rgba(0, 255, 150, 0.3);
-      }
-
-      .card-title {
-        font-size: 1.25rem;
-        font-weight: bold;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 35px rgba(0, 255, 150, 0.3);
       }
 
       .glow {
-        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+        text-shadow: 0 0 8px #0ff;
+      }
+
+      .link-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.05);
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      .link-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: scale(1.02);
       }
     </style>
   </head>
-  <body class="min-h-screen py-12 px-6">
+  <body class="min-h-screen py-12 px-4 md:px-12">
     <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold glow mb-3">Selamat Datang di Gatz Network</h1>
-      <p class="text-gray-300 text-lg">Satu portal untuk semua konten favorit Anda: Komik, Anime, Hentai, Doujin & Donghua</p>
+      <h1 class="text-4xl md:text-5xl font-bold glow mb-3">🌐 Gatz Network Portal</h1>
+      <p class="text-gray-400 text-lg">Pusat akses semua web: Komik, Anime, Donghua, Hentai, & Doujin</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
       <!-- Komik -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up">
-        <h2 class="card-title mb-2 text-green-300">Web Komik</h2>
-        <ul class="text-sm text-gray-300 space-y-1">
-          <li><a href="https://mangatz.xyz" target="_blank" class="underline hover:text-green-400">mangatz.xyz</a></li>
-          <li><a href="https://mangatz.web.id" target="_blank" class="underline hover:text-green-400">mangatz.web.id</a></li>
-          <li><a href="https://mangatz.biz.id" target="_blank" class="underline hover:text-green-400">mangatz.biz.id</a></li>
-        </ul>
+        <h2 class="text-xl font-bold text-green-300 mb-4 flex items-center gap-2">
+          <i class="fas fa-book-open"></i> Web Komik
+        </h2>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://mangatz.xyz" target="_blank" class="link-item">
+            mangatz.xyz <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://mangatz.web.id" target="_blank" class="link-item">
+            mangatz.web.id <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://mangatz.biz.id" target="_blank" class="link-item">
+            mangatz.biz.id <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Anime -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-        <h2 class="card-title mb-2 text-blue-300">Web Anime</h2>
-        <ul class="text-sm text-gray-300 space-y-1">
-          <li><a href="https://gatznime.my.id" target="_blank" class="underline hover:text-blue-400">gatznime.my.id</a></li>
-          <li><a href="https://v1.gatznime.my.id" target="_blank" class="underline hover:text-blue-400">v1.gatznime.my.id</a></li>
-        </ul>
+        <h2 class="text-xl font-bold text-blue-300 mb-4 flex items-center gap-2">
+          <i class="fas fa-film"></i> Web Anime
+        </h2>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://gatznime.my.id" target="_blank" class="link-item">
+            gatznime.my.id <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="https://v1.gatznime.my.id" target="_blank" class="link-item">
+            v1.gatznime.my.id <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Donghua -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-        <h2 class="card-title mb-2 text-yellow-300">Web Donghua</h2>
-        <ul class="text-sm text-gray-300">
-          <li><a href="https://gatzhua.agat.my.id/" target="_blank" class="underline hover:text-yellow-400">gatzhua.agat.my.id</a></li>
-        </ul>
+        <h2 class="text-xl font-bold text-yellow-300 mb-4 flex items-center gap-2">
+          <i class="fas fa-dragon"></i> Web Donghua
+        </h2>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://gatzhua.agat.my.id" target="_blank" class="link-item">
+            gatzhua.agat.my.id <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Hentai -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-        <h2 class="card-title mb-2 text-pink-300">Anime Hentai</h2>
-        <ul class="text-sm text-gray-300">
-          <li><a href="https://gatzpoi.my.id" target="_blank" class="underline hover:text-pink-400">gatzpoi.my.id</a></li>
-        </ul>
+        <h2 class="text-xl font-bold text-pink-300 mb-4 flex items-center gap-2">
+          <i class="fas fa-heart"></i> Anime Hentai
+        </h2>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://gatzpoi.my.id" target="_blank" class="link-item">
+            gatzpoi.my.id <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Doujin -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="400">
-        <h2 class="card-title mb-2 text-purple-300">Komik Doujin (Mirip Shinigami.bio)</h2>
-        <ul class="text-sm text-gray-300">
-          <li><a href="https://gatzdoujin.agat.my.id" target="_blank" class="underline hover:text-purple-400">gatzdoujin.agat.my.id</a></li>
-        </ul>
-        <p class="text-xs text-gray-400 mt-2">Desain mirip Shinigami.bio</p>
+        <h2 class="text-xl font-bold text-purple-300 mb-4 flex items-center gap-2">
+          <i class="fas fa-user-secret"></i> Komik Doujin
+        </h2>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://gatzdoujin.agat.my.id" target="_blank" class="link-item">
+            gatzdoujin.agat.my.id <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+        <p class="text-xs text-gray-400 mt-3">Desain mirip <a href="https://shinigami.bio/" class="underline hover:text-purple-400" target="_blank">shinigami.bio</a></p>
       </div>
 
       <!-- CTA -->
       <div class="card p-6 rounded-2xl text-center" data-aos="zoom-in" data-aos-delay="500">
-        <h2 class="card-title text-cyan-300">Gabung Komunitas</h2>
-        <p class="text-sm text-gray-400 my-3">Ikuti perkembangan terbaru, update konten dan fitur komunitas.</p>
-        <a href="#" class="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-xl inline-block mt-2 transition">Join Discord</a>
+        <h2 class="text-xl font-bold text-cyan-300 mb-2">Gabung Komunitas</h2>
+        <p class="text-sm text-gray-400 mb-4">Dapatkan info dan update langsung dari Gatz Network.</p>
+        <a href="#" class="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-xl inline-block transition">
+          Join Discord
+        </a>
       </div>
     </div>
 
