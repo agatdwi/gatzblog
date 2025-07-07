@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gatz Network Portal</title>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => AOS.init());
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: #0f0f1a;
+        color: #fff;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      .card {
+        background: linear-gradient(145deg, #1e1e2f, #2d2d44);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 255, 150, 0.3);
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+
+      .glow {
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen py-12 px-6">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold glow mb-3">Selamat Datang di Gatz Network</h1>
+      <p class="text-gray-300 text-lg">Satu portal untuk semua konten favorit Anda: Komik, Anime, Hentai, Doujin & Donghua</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <!-- Komik -->
+      <div class="card p-6 rounded-2xl" data-aos="fade-up">
+        <h2 class="card-title mb-2 text-green-300">Web Komik</h2>
+        <ul class="text-sm text-gray-300 space-y-1">
+          <li><a href="https://mangatz.xyz" target="_blank" class="underline hover:text-green-400">mangatz.xyz</a></li>
+          <li><a href="https://mangatz.web.id" target="_blank" class="underline hover:text-green-400">mangatz.web.id</a></li>
+          <li><a href="https://mangatz.biz.id" target="_blank" class="underline hover:text-green-400">mangatz.biz.id</a></li>
+        </ul>
+      </div>
+
+      <!-- Anime -->
+      <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="card-title mb-2 text-blue-300">Web Anime</h2>
+        <ul class="text-sm text-gray-300 space-y-1">
+          <li><a href="https://gatznime.my.id" target="_blank" class="underline hover:text-blue-400">gatznime.my.id</a></li>
+          <li><a href="https://v1.gatznime.my.id" target="_blank" class="underline hover:text-blue-400">v1.gatznime.my.id</a></li>
+        </ul>
+      </div>
+
+      <!-- Donghua -->
+      <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="card-title mb-2 text-yellow-300">Web Donghua</h2>
+        <ul class="text-sm text-gray-300">
+          <li><a href="https://gatzhua.agat.my.id/" target="_blank" class="underline hover:text-yellow-400">gatzhua.agat.my.id</a></li>
+        </ul>
+      </div>
+
+      <!-- Hentai -->
+      <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+        <h2 class="card-title mb-2 text-pink-300">Anime Hentai</h2>
+        <ul class="text-sm text-gray-300">
+          <li><a href="https://gatzpoi.my.id" target="_blank" class="underline hover:text-pink-400">gatzpoi.my.id</a></li>
+        </ul>
+      </div>
+
+      <!-- Doujin -->
+      <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="400">
+        <h2 class="card-title mb-2 text-purple-300">Komik Doujin (Mirip Shinigami.bio)</h2>
+        <ul class="text-sm text-gray-300">
+          <li><a href="https://gatzdoujin.agat.my.id" target="_blank" class="underline hover:text-purple-400">gatzdoujin.agat.my.id</a></li>
+        </ul>
+        <p class="text-xs text-gray-400 mt-2">Desain mirip Shinigami.bio</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="card p-6 rounded-2xl text-center" data-aos="zoom-in" data-aos-delay="500">
+        <h2 class="card-title text-cyan-300">Gabung Komunitas</h2>
+        <p class="text-sm text-gray-400 my-3">Ikuti perkembangan terbaru, update konten dan fitur komunitas.</p>
+        <a href="#" class="bg-cyan-500 hover:bg-cyan-600 text-white py-2 px-4 rounded-xl inline-block mt-2 transition">Join Discord</a>
+      </div>
+    </div>
+
+    <footer class="text-center text-gray-500 text-sm mt-16">
+      &copy; 2025 Gatz Network. All rights reserved.
+    </footer>
+  </body>
+</html>
