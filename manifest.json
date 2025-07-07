@@ -1,0 +1,16 @@
+{
+  "name": "AgatZ List",
+  "short_name": "AgatZ",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#090912",
+  "theme_color": "#00ffd5",
+  "description": "AgatZ adalah portal akses cepat ke berbagai situs hiburan: Komik, Anime, Donghua, dan lainnya.",
+  "icons": [
+    {
+      "src": "https://files.catbox.moe/sad5gm.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
