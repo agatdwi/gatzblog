@@ -40,99 +40,112 @@
       }
 
       .link-item {
-        @apply flex items-center justify-between px-4 py-3 rounded-lg text-white text-sm;
-        background: rgba(255, 255, 255, 0.06);
-        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.05);
+        transition: background 0.3s ease, transform 0.2s ease;
+        border: 1px solid rgba(255, 255, 255, 0.03);
       }
 
       .link-item:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.1);
         transform: scale(1.02);
+      }
+
+      .link-item i {
+        color: #00ffd5;
       }
     </style>
   </head>
   <body class="min-h-screen py-12 px-4 md:px-12">
     <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold glow mb-4">🌐 Gatz Network Portal</h1>
-      <p class="text-gray-400 text-lg max-w-xl mx-auto">Pusat semua konten: Komik, Anime, Donghua, dan Doujin</p>
+      <h1 class="text-4xl md:text-5xl font-bold glow mb-3">🌐 Gatz Network Portal</h1>
+      <p class="text-gray-400 text-lg">Pusat akses semua web: Komik, Anime, Donghua, Hentai, & Doujin</p>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
       <!-- Komik -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up">
-        <h2 class="text-xl font-semibold text-green-300 mb-4 flex items-center gap-2">
+        <h2 class="text-xl font-bold text-green-300 mb-4 flex items-center gap-2">
           <i class="fas fa-book-open"></i> Web Komik
         </h2>
-        <div class="space-y-3">
-          <a href="https://mangatz.xyz" class="link-item" target="_blank">
-            mangatz.xyz <i class="fas fa-arrow-up-right-from-square text-green-200"></i>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://mangatz.xyz" target="_blank" class="link-item">
+            mangatz.xyz <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
-          <a href="https://mangatz.web.id" class="link-item" target="_blank">
-            mangatz.web.id <i class="fas fa-arrow-up-right-from-square text-green-200"></i>
+          <a href="https://mangatz.web.id" target="_blank" class="link-item">
+            mangatz.web.id <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
-          <a href="https://mangatz.biz.id" class="link-item" target="_blank">
-            mangatz.biz.id <i class="fas fa-arrow-up-right-from-square text-green-200"></i>
+          <a href="https://mangatz.biz.id" target="_blank" class="link-item">
+            mangatz.biz.id <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
         </div>
       </div>
 
       <!-- Anime -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-        <h2 class="text-xl font-semibold text-blue-300 mb-4 flex items-center gap-2">
-          <i class="fas fa-tv"></i> Web Anime
+        <h2 class="text-xl font-bold text-blue-300 mb-4 flex items-center gap-2">
+          <i class="fas fa-film"></i> Web Anime
         </h2>
-        <div class="space-y-3">
-          <a href="https://gatznime.my.id" class="link-item" target="_blank">
-            gatznime.my.id <i class="fas fa-arrow-up-right-from-square text-blue-200"></i>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://gatznime.my.id" target="_blank" class="link-item">
+            gatznime.my.id <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
-          <a href="https://v1.gatznime.my.id" class="link-item" target="_blank">
-            v1.gatznime.my.id <i class="fas fa-arrow-up-right-from-square text-blue-200"></i>
+          <a href="https://v1.gatznime.my.id" target="_blank" class="link-item">
+            v1.gatznime.my.id <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
         </div>
       </div>
 
       <!-- Donghua -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-        <h2 class="text-xl font-semibold text-yellow-300 mb-4 flex items-center gap-2">
+        <h2 class="text-xl font-bold text-yellow-300 mb-4 flex items-center gap-2">
           <i class="fas fa-dragon"></i> Web Donghua
         </h2>
-        <div class="space-y-3">
-          <a href="https://gatzhua.agat.my.id" class="link-item" target="_blank">
-            gatzhua.agat.my.id <i class="fas fa-arrow-up-right-from-square text-yellow-200"></i>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://gatzhua.agat.my.id" target="_blank" class="link-item">
+            gatzhua.agat.my.id <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
         </div>
       </div>
 
       <!-- Hentai -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-        <h2 class="text-xl font-semibold text-pink-300 mb-4 flex items-center gap-2">
+        <h2 class="text-xl font-bold text-pink-300 mb-4 flex items-center gap-2">
           <i class="fas fa-heart"></i> Anime Hentai
         </h2>
-        <div class="space-y-3">
-          <a href="https://gatzpoi.my.id" class="link-item" target="_blank">
-            gatzpoi.my.id <i class="fas fa-arrow-up-right-from-square text-pink-200"></i>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://gatzpoi.my.id" target="_blank" class="link-item">
+            gatzpoi.my.id <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
         </div>
       </div>
 
       <!-- Doujin -->
       <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="400">
-        <h2 class="text-xl font-semibold text-purple-300 mb-4 flex items-center gap-2">
-          <i class="fas fa-user-ninja"></i> Komik Doujin
+        <h2 class="text-xl font-bold text-purple-300 mb-4 flex items-center gap-2">
+          <i class="fas fa-user-secret"></i> Komik Doujin
         </h2>
-        <div class="space-y-3">
-          <a href="https://gatzdoujin.agat.my.id" class="link-item" target="_blank">
-            gatzdoujin.agat.my.id <i class="fas fa-arrow-up-right-from-square text-purple-200"></i>
+        <div class="space-y-3 text-sm text-white">
+          <a href="https://gatzdoujin.agat.my.id" target="_blank" class="link-item">
+            gatzdoujin.agat.my.id <i class="fas fa-arrow-up-right-from-square"></i>
           </a>
         </div>
       </div>
 
-      <!-- Contact Owner -->
+      <!-- WA Contact -->
       <div class="card p-6 rounded-2xl text-center flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="500">
-        <h2 class="text-xl font-semibold text-cyan-300 mb-2">📞 Contact Owner</h2>
-        <p class="text-gray-400 text-sm mb-4">Hubungi langsung via WhatsApp untuk kolaborasi, request, atau pertanyaan.</p>
-        <a href="https://wa.me/6283839531800" class="bg-green-500 hover:bg-green-600 text-white py-2 px-5 rounded-xl transition flex items-center gap-2">
-          <i class="fab fa-whatsapp text-lg"></i> Chat WhatsApp
+        <h2 class="text-xl font-bold text-cyan-300 mb-2">Contact Owner</h2>
+        <p class="text-sm text-gray-400 mb-4">Hubungi langsung via WhatsApp untuk pertanyaan atau kerjasama.</p>
+        <a
+          href="https://wa.me/6283839531800"
+          target="_blank"
+          class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-xl transition flex items-center gap-2"
+        >
+          <i class="fab fa-whatsapp"></i> WhatsApp Owner
         </a>
       </div>
     </div>
