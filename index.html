@@ -289,78 +289,82 @@
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Get all website links
-        const websiteLinks = document.querySelectorAll('[data-website]');
-        document.getElementById('total-count').textContent = websiteLinks.length;
+  document.addEventListener('DOMContentLoaded', function() {
+    const websiteLinks = document.querySelectorAll('[data-website]');
+    document.getElementById('total-count').textContent = websiteLinks.length;
+    
+    async function checkWebsiteStatus(url, elementId) {
+      const statusElement = document.getElementById(elementId);
+      
+      // Coba beberapa metode untuk mengecek status
+      try {
+        // Metode 1: Menggunakan fetch dengan mode 'no-cors' dan timeout
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Timeout')), 5000));
         
-        // Function to check website status
-        async function checkWebsiteStatus(url, elementId) {
-          const statusElement = document.getElementById(elementId);
-          const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('https://' + url)}`;
-          
-          try {
-            const response = await fetch(proxyUrl, {
-              method: 'HEAD',
-              mode: 'cors',
-              cache: 'no-cache'
-            });
-            
-            if (response.ok) {
-              statusElement.classList.remove('pulse', 'status-inactive');
-              statusElement.classList.add('status-active');
-              return true;
-            } else {
-              throw new Error('Website not responding properly');
-            }
-          } catch (error) {
-            statusElement.classList.remove('pulse', 'status-active');
-            statusElement.classList.add('status-inactive');
-            return false;
-          }
-        }
-        
-        // Check all websites
-        async function checkAllWebsites() {
-          let onlineCount = 0;
-          
-          for (const link of websiteLinks) {
-            const website = link.getAttribute('data-website');
-            const elementId = `status-${website}`;
-            const isOnline = await checkWebsiteStatus(website, elementId);
-            
-            if (isOnline) onlineCount++;
-            
-            // Add slight delay between checks to avoid rate limiting
-            await new Promise(resolve => setTimeout(resolve, 500));
-          }
-          
-          // Update online count
-          document.getElementById('online-count').textContent = onlineCount;
-          
-          // Update last checked time
-          const now = new Date();
-          document.getElementById('last-updated').textContent = `Diperbarui: ${now.toLocaleTimeString()}`;
-        }
-        
-        // Initial check
-        checkAllWebsites();
-        
-        // Check every 5 minutes
-        setInterval(checkAllWebsites, 5 * 60 * 1000);
-        
-        // Add click event to show loading state
-        websiteLinks.forEach(link => {
-          link.addEventListener('click', function(e) {
-            const website = this.getAttribute('data-website');
-            const statusElement = document.getElementById(`status-${website}`);
-            
-            // Show loading state
-            statusElement.classList.remove('status-active', 'status-inactive');
-            statusElement.classList.add('pulse');
-          });
+        const fetchPromise = fetch(`https://${url}`, {
+          method: 'HEAD',
+          mode: 'no-cors',
+          cache: 'no-store'
         });
+        
+        await Promise.race([fetchPromise, timeoutPromise]);
+        
+        statusElement.classList.remove('pulse', 'status-inactive');
+        statusElement.classList.add('status-active');
+        return true;
+      } catch (error) {
+        // Jika metode pertama gagal, coba metode alternatif
+        try {
+          const img = new Image();
+          img.src = `https://${url}/favicon.ico?${Date.now()}`;
+          
+          await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+            setTimeout(() => reject(new Error('Timeout')), 3000);
+          });
+          
+          statusElement.classList.remove('pulse', 'status-inactive');
+          statusElement.classList.add('status-active');
+          return true;
+        } catch (err) {
+          statusElement.classList.remove('pulse', 'status-active');
+          statusElement.classList.add('status-inactive');
+          return false;
+        }
+      }
+    }
+    
+    async function checkAllWebsites() {
+      let onlineCount = 0;
+      
+      for (const link of websiteLinks) {
+        const website = link.getAttribute('data-website');
+        const elementId = `status-${website}`;
+        const isOnline = await checkWebsiteStatus(website, elementId);
+        
+        if (isOnline) onlineCount++;
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+      
+      document.getElementById('online-count').textContent = onlineCount;
+      const now = new Date();
+      document.getElementById('last-updated').textContent = `Diperbarui: ${now.toLocaleTimeString()}`;
+    }
+    
+    checkAllWebsites();
+    setInterval(checkAllWebsites, 5 * 60 * 1000);
+    
+    websiteLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const website = this.getAttribute('data-website');
+        const statusElement = document.getElementById(`status-${website}`);
+        statusElement.classList.remove('status-active', 'status-inactive');
+        statusElement.classList.add('pulse');
       });
-    </script>
+    });
+  });
+</script>
   </body>
 </html>
