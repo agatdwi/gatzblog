@@ -18,7 +18,6 @@
     <link rel="icon" type="image/png" href="https://files.catbox.moe/sad5gm.jpg" />
     <link rel="manifest" href="manifest.json" />
 
-
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
@@ -28,10 +27,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
     <style>
+      :root {
+        --primary: #00ffd5;
+        --secondary: #0f0f1a;
+      }
       body {
         background: radial-gradient(circle at top, #0f0f1a, #090912);
         color: #fff;
-        font-family: 'Segoe UI', sans-serif;
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        min-height: 100vh;
       }
       .card {
         background: rgba(30, 30, 50, 0.5);
@@ -45,7 +49,7 @@
         box-shadow: 0 10px 35px rgba(0, 255, 150, 0.3);
       }
       .glow {
-        text-shadow: 0 0 8px #0ff;
+        text-shadow: 0 0 8px var(--primary);
       }
       .link-item {
         display: flex;
@@ -54,112 +58,309 @@
         padding: 12px 16px;
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.05);
-        transition: background 0.3s ease, transform 0.2s ease;
+        transition: all 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.03);
+        position: relative;
+        overflow: hidden;
       }
       .link-item:hover {
         background-color: rgba(255, 255, 255, 0.1);
         transform: scale(1.02);
       }
       .link-item i {
-        color: #00ffd5;
+        color: var(--primary);
+      }
+      .status-indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 10px;
+        display: inline-block;
+      }
+      .status-active {
+        background-color: #00ff7f;
+        box-shadow: 0 0 8px #00ff7f;
+      }
+      .status-inactive {
+        background-color: #ff5555;
+        box-shadow: 0 0 8px #ff5555;
+      }
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% { opacity: 0.7; }
+        50% { opacity: 1; }
+        100% { opacity: 0.7; }
+      }
+      .tooltip {
+        position: relative;
+        display: inline-block;
+      }
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: rgba(0,0,0,0.8);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 12px;
+      }
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #00ffd5, #00bfff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
     </style>
   </head>
-  <body class="min-h-screen py-12 px-4 md:px-12">
-    <div class="text-center mb-12">
-      <img
-        src="https://files.catbox.moe/sad5gm.jpg"
-        alt="Logo"
-        class="w-24 h-24 mx-auto rounded-full border-2 border-cyan-400 mb-4"
-      />
-      <h1 class="text-4xl md:text-5xl font-bold glow mb-3">AgatZ List</h1>
-      <p class="text-gray-400 text-lg">Pusat akses semua web: Komik, Anime, Donghua, Hentai, & Doujin</p>
+  <body class="py-12 px-4 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <img
+          src="https://files.catbox.moe/sad5gm.jpg"
+          alt="Logo"
+          class="w-24 h-24 mx-auto rounded-full border-2 border-cyan-400 mb-4 hover:scale-105 transition-transform duration-300"
+        />
+        <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-3">AgatZ List</h1>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Pusat akses semua web: Komik, Anime, Donghua, Hentai, & Doujin dengan status real-time</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Web Komik -->
+        <div class="card p-6 rounded-2xl" data-aos="fade-up">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-green-300 flex items-center gap-2">
+              <i class="fas fa-book-open"></i> Web Komik
+            </h2>
+            <span class="text-xs bg-green-900/50 text-green-300 px-2 py-1 rounded-full">3 Situs</span>
+          </div>
+          <div class="space-y-3 text-sm text-white">
+            <a href="https://mangatz.xyz" target="_blank" class="link-item" data-website="mangatz.xyz">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-mangatz.xyz"></span>
+                mangatz.xyz
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="https://mangatz.web.id" target="_blank" class="link-item" data-website="mangatz.web.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-mangatz.web.id"></span>
+                mangatz.web.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="https://mangatz.biz.id" target="_blank" class="link-item" data-website="mangatz.biz.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-mangatz.biz.id"></span>
+                mangatz.biz.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Web Anime -->
+        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-blue-300 flex items-center gap-2">
+              <i class="fas fa-film"></i> Web Anime
+            </h2>
+            <span class="text-xs bg-blue-900/50 text-blue-300 px-2 py-1 rounded-full">2 Situs</span>
+          </div>
+          <div class="space-y-3 text-sm text-white">
+            <a href="https://gatznime.my.id" target="_blank" class="link-item" data-website="gatznime.my.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-gatznime.my.id"></span>
+                gatznime.my.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="https://v1.gatznime.my.id" target="_blank" class="link-item" data-website="v1.gatznime.my.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-v1.gatznime.my.id"></span>
+                v1.gatznime.my.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Web Donghua -->
+        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-yellow-300 flex items-center gap-2">
+              <i class="fas fa-dragon"></i> Web Donghua
+            </h2>
+            <span class="text-xs bg-yellow-900/50 text-yellow-300 px-2 py-1 rounded-full">1 Situs</span>
+          </div>
+          <div class="space-y-3 text-sm text-white">
+            <a href="https://gatzhua.agat.my.id" target="_blank" class="link-item" data-website="gatzhua.agat.my.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-gatzhua.agat.my.id"></span>
+                gatzhua.agat.my.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Anime Hentai, JAV -->
+        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-pink-300 flex items-center gap-2">
+              <i class="fas fa-heart"></i> Anime Hentai, JAV
+            </h2>
+            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded-full">1 Situs</span>
+          </div>
+          <div class="space-y-3 text-sm text-white">
+            <a href="https://gatzpoi.my.id" target="_blank" class="link-item" data-website="gatzpoi.my.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-gatzpoi.my.id"></span>
+                gatzpoi.my.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Komik Doujin -->
+        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="400">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-purple-300 flex items-center gap-2">
+              <i class="fas fa-user-secret"></i> Komik Doujin
+            </h2>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">1 Situs</span>
+          </div>
+          <div class="space-y-3 text-sm text-white">
+            <a href="https://gatzdoujin.agat.my.id" target="_blank" class="link-item" data-website="gatzdoujin.agat.my.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-gatzdoujin.agat.my.id"></span>
+                gatzdoujin.agat.my.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Owner -->
+        <div class="card p-6 rounded-2xl text-center flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="500">
+          <div class="bg-cyan-900/20 p-3 rounded-full mb-4">
+            <i class="fas fa-headset text-cyan-300 text-2xl"></i>
+          </div>
+          <h2 class="text-xl font-bold text-cyan-300 mb-2">Contact Owner</h2>
+          <p class="text-sm text-gray-400 mb-4">
+            Jika mau request website bisa DM ke WhatsApp di bawah ini:
+          </p>
+          <a
+            href="https://wa.me/6283839531800"
+            target="_blank"
+            class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-xl transition flex items-center gap-2"
+          >
+            <i class="fab fa-whatsapp"></i> WhatsApp Owner
+          </a>
+          <div class="mt-4 text-xs text-gray-500 tooltip">
+            <i class="fas fa-info-circle"></i> Status Website
+            <span class="tooltiptext">Sistem akan otomatis mengecek status website setiap 5 menit</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="text-center text-gray-500 text-sm mt-16 border-t border-gray-800 pt-6">
+        <div class="flex items-center justify-center gap-4 mb-2">
+          <span id="last-updated" class="text-xs bg-gray-800 px-3 py-1 rounded-full">Memperbarui status...</span>
+          <span class="text-xs">•</span>
+          <span class="text-xs">Online: <span id="online-count">0</span>/<span id="total-count">0</span></span>
+        </div>
+        <div>&copy; 2025 AgatZ All rights reserved.</div>
+      </footer>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-  
-      <div class="card p-6 rounded-2xl" data-aos="fade-up">
-        <h2 class="text-xl font-bold text-green-300 mb-4 flex items-center gap-2">
-          <i class="fas fa-book-open"></i> Web Komik
-        </h2>
-        <div class="space-y-3 text-sm text-white">
-          <a href="https://mangatz.xyz" target="_blank" class="link-item">
-            mangatz.xyz <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="https://mangatz.web.id" target="_blank" class="link-item">
-            mangatz.web.id <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="https://mangatz.biz.id" target="_blank" class="link-item">
-            mangatz.biz.id <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
-      </div>
-      
-      <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-        <h2 class="text-xl font-bold text-blue-300 mb-4 flex items-center gap-2">
-          <i class="fas fa-film"></i> Web Anime
-        </h2>
-        <div class="space-y-3 text-sm text-white">
-          <a href="https://gatznime.my.id" target="_blank" class="link-item">
-            gatznime.my.id <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="https://v1.gatznime.my.id" target="_blank" class="link-item">
-            v1.gatznime.my.id <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-        <h2 class="text-xl font-bold text-yellow-300 mb-4 flex items-center gap-2">
-          <i class="fas fa-dragon"></i> Web Donghua
-        </h2>
-        <div class="space-y-3 text-sm text-white">
-          <a href="https://gatzhua.agat.my.id" target="_blank" class="link-item">
-            gatzhua.agat.my.id <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
-      </div>
-      
-      <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-        <h2 class="text-xl font-bold text-pink-300 mb-4 flex items-center gap-2">
-          <i class="fas fa-heart"></i> Anime Hentai, JAV
-        </h2>
-        <div class="space-y-3 text-sm text-white">
-          <a href="https://gatzpoi.my.id" target="_blank" class="link-item">
-            gatzpoi.my.id <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="400">
-        <h2 class="text-xl font-bold text-purple-300 mb-4 flex items-center gap-2">
-          <i class="fas fa-user-secret"></i> Komik Doujin
-        </h2>
-        <div class="space-y-3 text-sm text-white">
-          <a href="https://gatzdoujin.agat.my.id" target="_blank" class="link-item">
-            gatzdoujin.agat.my.id <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="card p-6 rounded-2xl text-center flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="500">
-        <h2 class="text-xl font-bold text-cyan-300 mb-2">Contact Owner</h2>
-        <p class="text-sm text-gray-400 mb-4">
-          Jika mau request website bisa DM ke WhatsApp di bawah ini:
-        </p>
-        <a
-          href="https://wa.me/6283839531800"
-          target="_blank"
-          class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-xl transition flex items-center gap-2"
-        >
-          <i class="fab fa-whatsapp"></i> WhatsApp Owner
-        </a>
-      </div>
-    </div>
-
-    <footer class="text-center text-gray-500 text-sm mt-16">
-      &copy; 2025 AgatZ All rights reserved.
-    </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get all website links
+        const websiteLinks = document.querySelectorAll('[data-website]');
+        document.getElementById('total-count').textContent = websiteLinks.length;
+        
+        // Function to check website status
+        async function checkWebsiteStatus(url, elementId) {
+          const statusElement = document.getElementById(elementId);
+          const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('https://' + url)}`;
+          
+          try {
+            const response = await fetch(proxyUrl, {
+              method: 'HEAD',
+              mode: 'cors',
+              cache: 'no-cache'
+            });
+            
+            if (response.ok) {
+              statusElement.classList.remove('pulse', 'status-inactive');
+              statusElement.classList.add('status-active');
+              return true;
+            } else {
+              throw new Error('Website not responding properly');
+            }
+          } catch (error) {
+            statusElement.classList.remove('pulse', 'status-active');
+            statusElement.classList.add('status-inactive');
+            return false;
+          }
+        }
+        
+        // Check all websites
+        async function checkAllWebsites() {
+          let onlineCount = 0;
+          
+          for (const link of websiteLinks) {
+            const website = link.getAttribute('data-website');
+            const elementId = `status-${website}`;
+            const isOnline = await checkWebsiteStatus(website, elementId);
+            
+            if (isOnline) onlineCount++;
+            
+            // Add slight delay between checks to avoid rate limiting
+            await new Promise(resolve => setTimeout(resolve, 500));
+          }
+          
+          // Update online count
+          document.getElementById('online-count').textContent = onlineCount;
+          
+          // Update last checked time
+          const now = new Date();
+          document.getElementById('last-updated').textContent = `Diperbarui: ${now.toLocaleTimeString()}`;
+        }
+        
+        // Initial check
+        checkAllWebsites();
+        
+        // Check every 5 minutes
+        setInterval(checkAllWebsites, 5 * 60 * 1000);
+        
+        // Add click event to show loading state
+        websiteLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            const website = this.getAttribute('data-website');
+            const statusElement = document.getElementById(`status-${website}`);
+            
+            // Show loading state
+            statusElement.classList.remove('status-active', 'status-inactive');
+            statusElement.classList.add('pulse');
+          });
+        });
+      });
+    </script>
   </body>
 </html>
