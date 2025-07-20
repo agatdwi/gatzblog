@@ -217,6 +217,25 @@
           </div>
         </div>
         
+        <!-- Web Drama -->
+        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="250">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-red-300 flex items-center gap-2">
+              <i class="fas fa-tv"></i> Web Drama
+            </h2>
+            <span class="text-xs bg-red-900/50 text-red-300 px-2 py-1 rounded-full">1 Situs</span>
+          </div>
+          <div class="space-y-3 text-sm text-white">
+            <a href="https://gatzdrama.agat.my.id" target="_blank" class="link-item" data-website="gatzdrama.agat.my.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-gatzdrama.agat.my.id"></span>
+                gatzdrama.agat.my.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        
         <!-- Anime Hentai, JAV -->
         <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
           <div class="flex items-center justify-between mb-4">
@@ -300,7 +319,7 @@
       try {
         // Metode 1: Menggunakan fetch dengan mode 'no-cors' dan timeout
         const timeoutPromise = new Promise((_, reject) => 
-          setTimeout(() => reject(new Error('Timeout')), 5000));
+          setTimeout(() => reject(new Error('Timeout')), 5000);
         
         const fetchPromise = fetch(`https://${url}`, {
           method: 'HEAD',
