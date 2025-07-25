@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -139,24 +139,39 @@
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-               <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-  <div class="flex items-center justify-between mb-4">
-    <h2 class="text-xl font-bold text-red-400 flex items-center gap-2">
-      <i class="fas fa-heart"></i> Drama Korea, china, japan, thailand, dll.
-    </h2>
-    <span class="text-xs bg-red-900/50 text-red-300 px-2 py-1 rounded-full">1 Situs</span>
-  </div>
-  <div class="space-y-3 text-sm text-white">
-    <a href="https://gatzdrama.agat.my.id" target="_blank" class="link-item" data-website="gatzdrama.agat.my.id">
-      <div class="flex items-center">
-        <span class="status-indicator pulse" id="status-gatzdrama.agat.my.id"></span>
-        gatzdrama.agat.my.id
-      </div>
-      <i class="fas fa-arrow-up-right-from-square"></i>
-    </a>
-  </div>
-</div>      
+        <!-- Drama Korea, China, Japan, Thailand, dll. -->
+        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold text-red-400 flex items-center gap-2">
+              <i class="fas fa-heart"></i> Drama Korea, China, Japan, Thailand, dll.
+            </h2>
+            <span class="text-xs bg-red-900/50 text-red-300 px-2 py-1 rounded-full">3 Situs</span>
+          </div>
+          <div class="space-y-3 text-sm text-white">
+            <a href="https://gatzdrama.agat.my.id" target="_blank" class="link-item" data-website="gatzdrama.agat.my.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-gatzdrama.agat.my.id"></span>
+                gatzdrama.agat.my.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="https://gatzfilm.zone.id" target="_blank" class="link-item" data-website="gatzfilm.zone.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-gatzfilm.zone.id"></span>
+                gatzfilm.zone.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="https://tv1-gatzfilm.zone.id" target="_blank" class="link-item" data-website="tv1-gatzfilm.zone.id">
+              <div class="flex items-center">
+                <span class="status-indicator pulse" id="status-tv1-gatzfilm.zone.id"></span>
+                tv1-gatzfilm.zone.id
+              </div>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+        
         <!-- Web Komik -->
         <div class="card p-6 rounded-2xl" data-aos="fade-up">
           <div class="flex items-center justify-between mb-4">
@@ -307,82 +322,82 @@
     </div>
 
     <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const websiteLinks = document.querySelectorAll('[data-website]');
-    document.getElementById('total-count').textContent = websiteLinks.length;
-    
-    async function checkWebsiteStatus(url, elementId) {
-      const statusElement = document.getElementById(elementId);
-      
-      // Coba beberapa metode untuk mengecek status
-      try {
-        // Metode 1: Menggunakan fetch dengan mode 'no-cors' dan timeout
-        const timeoutPromise = new Promise((_, reject) => 
-          setTimeout(() => reject(new Error('Timeout')), 5000));
+      document.addEventListener('DOMContentLoaded', function() {
+        const websiteLinks = document.querySelectorAll('[data-website]');
+        document.getElementById('total-count').textContent = websiteLinks.length;
         
-        const fetchPromise = fetch(`https://${url}`, {
-          method: 'HEAD',
-          mode: 'no-cors',
-          cache: 'no-store'
-        });
-        
-        await Promise.race([fetchPromise, timeoutPromise]);
-        
-        statusElement.classList.remove('pulse', 'status-inactive');
-        statusElement.classList.add('status-active');
-        return true;
-      } catch (error) {
-        // Jika metode pertama gagal, coba metode alternatif
-        try {
-          const img = new Image();
-          img.src = `https://${url}/favicon.ico?${Date.now()}`;
+        async function checkWebsiteStatus(url, elementId) {
+          const statusElement = document.getElementById(elementId);
           
-          await new Promise((resolve, reject) => {
-            img.onload = resolve;
-            img.onerror = reject;
-            setTimeout(() => reject(new Error('Timeout')), 3000);
-          });
-          
-          statusElement.classList.remove('pulse', 'status-inactive');
-          statusElement.classList.add('status-active');
-          return true;
-        } catch (err) {
-          statusElement.classList.remove('pulse', 'status-active');
-          statusElement.classList.add('status-inactive');
-          return false;
+          // Coba beberapa metode untuk mengecek status
+          try {
+            // Metode 1: Menggunakan fetch dengan mode 'no-cors' dan timeout
+            const timeoutPromise = new Promise((_, reject) => 
+              setTimeout(() => reject(new Error('Timeout')), 5000));
+            
+            const fetchPromise = fetch(`https://${url}`, {
+              method: 'HEAD',
+              mode: 'no-cors',
+              cache: 'no-store'
+            });
+            
+            await Promise.race([fetchPromise, timeoutPromise]);
+            
+            statusElement.classList.remove('pulse', 'status-inactive');
+            statusElement.classList.add('status-active');
+            return true;
+          } catch (error) {
+            // Jika metode pertama gagal, coba metode alternatif
+            try {
+              const img = new Image();
+              img.src = `https://${url}/favicon.ico?${Date.now()}`;
+              
+              await new Promise((resolve, reject) => {
+                img.onload = resolve;
+                img.onerror = reject;
+                setTimeout(() => reject(new Error('Timeout')), 3000);
+              });
+              
+              statusElement.classList.remove('pulse', 'status-inactive');
+              statusElement.classList.add('status-active');
+              return true;
+            } catch (err) {
+              statusElement.classList.remove('pulse', 'status-active');
+              statusElement.classList.add('status-inactive');
+              return false;
+            }
+          }
         }
-      }
-    }
-    
-    async function checkAllWebsites() {
-      let onlineCount = 0;
-      
-      for (const link of websiteLinks) {
-        const website = link.getAttribute('data-website');
-        const elementId = `status-${website}`;
-        const isOnline = await checkWebsiteStatus(website, elementId);
         
-        if (isOnline) onlineCount++;
-        await new Promise(resolve => setTimeout(resolve, 1000));
-      }
-      
-      document.getElementById('online-count').textContent = onlineCount;
-      const now = new Date();
-      document.getElementById('last-updated').textContent = `Diperbarui: ${now.toLocaleTimeString()}`;
-    }
-    
-    checkAllWebsites();
-    setInterval(checkAllWebsites, 5 * 60 * 1000);
-    
-    websiteLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        const website = this.getAttribute('data-website');
-        const statusElement = document.getElementById(`status-${website}`);
-        statusElement.classList.remove('status-active', 'status-inactive');
-        statusElement.classList.add('pulse');
+        async function checkAllWebsites() {
+          let onlineCount = 0;
+          
+          for (const link of websiteLinks) {
+            const website = link.getAttribute('data-website');
+            const elementId = `status-${website}`;
+            const isOnline = await checkWebsiteStatus(website, elementId);
+            
+            if (isOnline) onlineCount++;
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+          
+          document.getElementById('online-count').textContent = onlineCount;
+          const now = new Date();
+          document.getElementById('last-updated').textContent = `Diperbarui: ${now.toLocaleTimeString()}`;
+        }
+        
+        checkAllWebsites();
+        setInterval(checkAllWebsites, 5 * 60 * 1000);
+        
+        websiteLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            const website = this.getAttribute('data-website');
+            const statusElement = document.getElementById(`status-${website}`);
+            statusElement.classList.remove('status-active', 'status-inactive');
+            statusElement.classList.add('pulse');
+          });
+        });
       });
-    });
-  });
-</script>
+    </script>
   </body>
 </html>
