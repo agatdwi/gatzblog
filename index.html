@@ -1,415 +1,817 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgatZ List</title>
-    <meta property="og:title" content="AgatZ List | Akses Komik, Anime, Hentai, Doujin & Donghua" />
-    <meta property="og:description" content="AgatZ List adalah portal akses ke berbagai website hiburan: Komik, Anime, Donghua, dan lainnya." />
-    <meta property="og:image" content="https://files.catbox.moe/sad5gm.jpg" />
-    <meta property="og:url" content="https://gatzhua.agat.my.id/" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AgatZ List | Akses Komik, Anime, Hentai, Doujin & Donghua" />
-    <meta name="twitter:description" content="AgatZ adalah portal akses cepat ke berbagai situs hiburan: Komik, Anime, Donghua, dan lainnya." />
-    <meta name="twitter:image" content="https://files.catbox.moe/sad5gm.jpg" />
-    <meta name="theme-color" content="#00ffd5" />
-
-    <link rel="icon" type="image/png" href="https://files.catbox.moe/sad5gm.jpg" />
-    <link rel="manifest" href="manifest.json" />
-
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    
+    <!-- Meta Tags Lengkap untuk SEO -->
+    <meta name="description" content="AgatZ List adalah portal akses terpusat untuk berbagai website hiburan: Komik, Anime, Donghua, Drama Asia, Hentai, Doujin, dan Movie Bioskop. Dilengkapi status real-time.">
+    <meta name="keywords" content="portal hiburan, kumpulan website, akses komik, baca anime, nonton donghua, drama korea, movie bioskop, hentai, doujin, agatz">
+    <meta name="author" content="AgatZ">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="AgatZ List | Portal Akses Semua Website Hiburan">
+    <meta property="og:description" content="Akses mudah ke berbagai website hiburan favoritmu: Komik, Anime, Donghua, Drama Asia, Movie Bioskop, Hentai & Doujin. Status website real-time!">
+    <meta property="og:image" content="https://files.catbox.moe/sad5gm.jpg">
+    <meta property="og:url" content="https://gatzhua.agatz.my.id/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AgatZ List">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AgatZ List | Portal Akses Website Hiburan">
+    <meta name="twitter:description" content="Kumpulan website komik, anime, donghua, drama asia, movie, hentai & doujin. Cek status real-time sebelum akses!">
+    <meta name="twitter:image" content="https://files.catbox.moe/sad5gm.jpg">
+    
+    <!-- Theme & Icons -->
+    <meta name="theme-color" content="#00ffd5">
+    <link rel="icon" type="image/png" href="https://files.catbox.moe/sad5gm.jpg">
+    <link rel="apple-touch-icon" href="https://files.catbox.moe/sad5gm.jpg">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Fonts & Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => AOS.init());
-    </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <style>
-      :root {
-        --primary: #00ffd5;
-        --secondary: #0f0f1a;
-      }
-      body {
-        background: radial-gradient(circle at top, #0f0f1a, #090912);
-        color: #fff;
-        font-family: 'Inter', 'Segoe UI', sans-serif;
-        min-height: 100vh;
-      }
-      .card {
-        background: rgba(30, 30, 50, 0.5);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 35px rgba(0, 255, 150, 0.3);
-      }
-      .glow {
-        text-shadow: 0 0 8px var(--primary);
-      }
-      .link-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 16px;
-        border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.05);
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.03);
-        position: relative;
-        overflow: hidden;
-      }
-      .link-item:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        transform: scale(1.02);
-      }
-      .link-item i {
-        color: var(--primary);
-      }
-      .status-indicator {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        margin-right: 10px;
-        display: inline-block;
-      }
-      .status-active {
-        background-color: #00ff7f;
-        box-shadow: 0 0 8px #00ff7f;
-      }
-      .status-inactive {
-        background-color: #ff5555;
-        box-shadow: 0 0 8px #ff5555;
-      }
-      .pulse {
-        animation: pulse 2s infinite;
-      }
-      @keyframes pulse {
-        0% { opacity: 0.7; }
-        50% { opacity: 1; }
-        100% { opacity: 0.7; }
-      }
-      .tooltip {
-        position: relative;
-        display: inline-block;
-      }
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: rgba(0,0,0,0.8);
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: opacity 0.3s;
-        font-size: 12px;
-      }
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-      }
-      .gradient-text {
-        background: linear-gradient(90deg, #00ffd5, #00bfff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-    </style>
-  </head>
-  <body class="py-12 px-4 md:px-12">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <img
-          src="https://files.catbox.moe/sad5gm.jpg"
-          alt="Logo"
-          class="w-24 h-24 mx-auto rounded-full border-2 border-cyan-400 mb-4 hover:scale-105 transition-transform duration-300"
-        />
-        <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-3">AgatZ List</h1>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Pusat akses semua web: Komik, Anime, Donghua, Hentai, & Doujin dengan status real-time</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- GatzFilm (Movie Bioskop) -->
-        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-orange-300 flex items-center gap-2">
-              <i class="fas fa-film"></i> GatzFilm (Movie Bioskop)
-            </h2>
-            <span class="text-xs bg-orange-900/50 text-orange-300 px-2 py-1 rounded-full">2 Situs</span>
-          </div>
-          <div class="space-y-3 text-sm text-white">
-            <a href="https://gatzfilm.zone.id" target="_blank" class="link-item" data-website="gatzfilm.zone.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-gatzfilm.zone.id"></span>
-                gatzfilm.zone.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-            <a href="https://tv1-gatzfilm.zone.id" target="_blank" class="link-item" data-website="tv1-gatzfilm.zone.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-tv1-gatzfilm.zone.id"></span>
-                tv1-gatzfilm.zone.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Drama Korea, China, Japan, Thailand, dll. -->
-        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-red-400 flex items-center gap-2">
-              <i class="fas fa-heart"></i> Drama Korea, China, Japan, Thailand, dll.
-            </h2>
-            <span class="text-xs bg-red-900/50 text-red-300 px-2 py-1 rounded-full">1 Situs</span>
-          </div>
-          <div class="space-y-3 text-sm text-white">
-            <a href="https://gatzdrama.agat.my.id" target="_blank" class="link-item" data-website="gatzdrama.agat.my.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-gatzdrama.agat.my.id"></span>
-                gatzdrama.agat.my.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-        <!-- Web Komik -->
-        <div class="card p-6 rounded-2xl" data-aos="fade-up">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-green-300 flex items-center gap-2">
-              <i class="fas fa-book-open"></i> Web Komik
-            </h2>
-            <span class="text-xs bg-green-900/50 text-green-300 px-2 py-1 rounded-full">3 Situs</span>
-          </div>
-          <div class="space-y-3 text-sm text-white">
-            <a href="https://mangatz.xyz" target="_blank" class="link-item" data-website="mangatz.xyz">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-mangatz.xyz"></span>
-                mangatz.xyz
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-            <a href="https://mangatz.web.id" target="_blank" class="link-item" data-website="mangatz.web.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-mangatz.web.id"></span>
-                mangatz.web.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-            <a href="https://mangatz.biz.id" target="_blank" class="link-item" data-website="mangatz.biz.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-mangatz.biz.id"></span>
-                mangatz.biz.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
+        :root {
+            --primary: #00ffd5;
+            --primary-dark: #00ccaa;
+            --secondary: #0f0f1a;
+            --accent: #00bfff;
+            --bg-gradient-start: #0a0a15;
+            --bg-gradient-end: #14142a;
+            --card-bg: rgba(20, 20, 35, 0.6);
+            --card-border: rgba(0, 255, 213, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0c0;
+            --glow-color: rgba(0, 255, 213, 0.3);
+        }
         
-        <!-- Web Anime -->
-        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-blue-300 flex items-center gap-2">
-              <i class="fas fa-film"></i> Web Anime
-            </h2>
-            <span class="text-xs bg-blue-900/50 text-blue-300 px-2 py-1 rounded-full">2 Situs</span>
-          </div>
-          <div class="space-y-3 text-sm text-white">
-            <a href="https://gatznime.my.id" target="_blank" class="link-item" data-website="gatznime.my.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-gatznime.my.id"></span>
-                gatznime.my.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-            <a href="https://v1.gatznime.my.id" target="_blank" class="link-item" data-website="v1.gatznime.my.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-v1.gatznime.my.id"></span>
-                v1.gatznime.my.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Web Donghua -->
-        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-yellow-300 flex items-center gap-2">
-              <i class="fas fa-dragon"></i> Web Donghua
-            </h2>
-            <span class="text-xs bg-yellow-900/50 text-yellow-300 px-2 py-1 rounded-full">1 Situs</span>
-          </div>
-          <div class="space-y-3 text-sm text-white">
-            <a href="https://gatzhua.agat.my.id" target="_blank" class="link-item" data-website="gatzhua.agat.my.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-gatzhua.agat.my.id"></span>
-                gatzhua.agat.my.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
         
-        <!-- Anime Hentai, JAV -->
-        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-pink-300 flex items-center gap-2">
-              <i class="fas fa-heart"></i> Anime Hentai, JAV
-            </h2>
-            <span class="text-xs bg-pink-900/50 text-pink-300 px-2 py-1 rounded-full">1 Situs</span>
-          </div>
-          <div class="space-y-3 text-sm text-white">
-            <a href="https://gatzpoi.my.id" target="_blank" class="link-item" data-website="gatzpoi.my.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-gatzpoi.my.id"></span>
-                gatzpoi.my.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Komik Doujin -->
-        <div class="card p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="400">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-purple-300 flex items-center gap-2">
-              <i class="fas fa-user-secret"></i> Komik Doujin
-            </h2>
-            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">1 Situs</span>
-          </div>
-          <div class="space-y-3 text-sm text-white">
-            <a href="https://gatzdoujin.agat.my.id" target="_blank" class="link-item" data-website="gatzdoujin.agat.my.id">
-              <div class="flex items-center">
-                <span class="status-indicator pulse" id="status-gatzdoujin.agat.my.id"></span>
-                gatzdoujin.agat.my.id
-              </div>
-              <i class="fas fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Contact Owner -->
-        <div class="card p-6 rounded-2xl text-center flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="500">
-          <div class="bg-cyan-900/20 p-3 rounded-full mb-4">
-            <i class="fas fa-headset text-cyan-300 text-2xl"></i>
-          </div>
-          <h2 class="text-xl font-bold text-cyan-300 mb-2">Contact Owner</h2>
-          <p class="text-sm text-gray-400 mb-4">
-            Jika mau request website bisa DM ke WhatsApp di bawah ini:
-          </p>
-          <a
-            href="https://wa.me/6283839531800"
-            target="_blank"
-            class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-xl transition flex items-center gap-2"
-          >
-            <i class="fab fa-whatsapp"></i> WhatsApp Owner
-          </a>
-          <div class="mt-4 text-xs text-gray-500 tooltip">
-            <i class="fas fa-info-circle"></i> Status Website
-            <span class="tooltiptext">Sistem akan otomatis mengecek status website setiap 5 menit</span>
-          </div>
-        </div>
-      </div>
-
-      <footer class="text-center text-gray-500 text-sm mt-16 border-t border-gray-800 pt-6">
-        <div class="flex items-center justify-center gap-4 mb-2">
-          <span id="last-updated" class="text-xs bg-gray-800 px-3 py-1 rounded-full">Memperbarui status...</span>
-          <span class="text-xs">•</span>
-          <span class="text-xs">Online: <span id="online-count">0</span>/<span id="total-count">0</span></span>
-        </div>
-        <div>&copy; 2025 AgatZ All rights reserved.</div>
-      </footer>
-    </div>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const websiteLinks = document.querySelectorAll('[data-website]');
-        document.getElementById('total-count').textContent = websiteLinks.length;
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
         
-        async function checkWebsiteStatus(url, elementId) {
-          const statusElement = document.getElementById(elementId);
-          
-          // Coba beberapa metode untuk mengecek status
-          try {
-            // Metode 1: Menggunakan fetch dengan mode 'no-cors' dan timeout
-            const timeoutPromise = new Promise((_, reject) => 
-              setTimeout(() => reject(new Error('Timeout')), 5000));
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 255, 213, 0.05) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(0, 255, 213, 0.3);
+            box-shadow: 0 25px 45px rgba(0, 255, 213, 0.25);
+        }
+        
+        .card:hover::before {
+            left: 100%;
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Link Items */
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 255, 213, 0.05);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .link-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .link-item:hover {
+            background: rgba(0, 255, 213, 0.08);
+            border-color: rgba(0, 255, 213, 0.3);
+            transform: translateX(5px);
+            padding-left: 22px;
+        }
+        
+        .link-item:hover::before {
+            opacity: 1;
+        }
+        
+        .link-item i {
+            color: var(--primary);
+            font-size: 14px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .link-item:hover i {
+            opacity: 1;
+        }
+        
+        /* Status Indicators */
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 12px;
+            position: relative;
+        }
+        
+        .status-active {
+            background: #00ff7f;
+            box-shadow: 0 0 15px #00ff7f;
+            animation: pulse-green 2s infinite;
+        }
+        
+        .status-inactive {
+            background: #ff4d4d;
+            box-shadow: 0 0 15px #ff4d4d;
+        }
+        
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 127, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 127, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 127, 0); }
+        }
+        
+        /* Category Badges */
+        .category-badge {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .category-badge:hover {
+            background: rgba(0, 255, 213, 0.2);
+            border-color: var(--primary);
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(5px);
+            color: #fff;
+            text-align: center;
+            border-radius: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            border: 1px solid rgba(0, 255, 213, 0.3);
+            pointer-events: none;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+        
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                border-radius: 20px;
+            }
             
-            const fetchPromise = fetch(`https://${url}`, {
-              method: 'HEAD',
-              mode: 'no-cors',
-              cache: 'no-store'
+            .link-item {
+                padding: 12px 16px;
+            }
+            
+            .gradient-text {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+        <!-- Header Section dengan Deskripsi Jelas -->
+        <div class="text-center mb-12 md:mb-20 relative">
+            <!-- Logo dengan efek float -->
+            <div class="relative inline-block mb-6 float-animation">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400 blur-xl opacity-50"></div>
+                <img src="https://files.catbox.moe/sad5gm.jpg" 
+                     alt="AgatZ List Logo" 
+                     class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-cyan-400/30 relative z-10 hover:scale-110 transition-all duration-500">
+            </div>
+            
+            <!-- Judul dengan Deskripsi -->
+            <h1 class="text-4xl md:text-6xl font-black mb-4">
+                <span class="gradient-text">AgatZ List</span>
+            </h1>
+            
+            <!-- Deskripsi Lengkap -->
+            <div class="max-w-3xl mx-auto space-y-4">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                    Solusi terpusat untuk mengakses <span class="text-cyan-400 font-semibold">12+ website hiburan</span> favoritmu! 
+                    Mulai dari <strong class="text-green-400">Komik</strong>, <strong class="text-blue-400">Anime</strong>, 
+                    <strong class="text-yellow-400">Donghua</strong>, <strong class="text-red-400">Drama Asia</strong>, 
+                    hingga <strong class="text-pink-400">Movie Bioskop</strong>.
+                </p>
+                <p class="text-gray-400 text-sm md:text-base flex items-center justify-center gap-2 flex-wrap">
+                    <span class="category-badge"><i class="fas fa-check-circle text-green-400 mr-1"></i>Status Real-time</span>
+                    <span class="category-badge"><i class="fas fa-bolt text-yellow-400 mr-1"></i>Akses Cepat</span>
+                    <span class="category-badge"><i class="fas fa-shield-alt text-blue-400 mr-1"></i>Update Otomatis</span>
+                </p>
+            </div>
+            
+            <!-- Statistik Cepat -->
+            <div class="flex justify-center gap-4 md:gap-8 mt-8">
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-cyan-400" id="total-sites">12</div>
+                    <div class="text-xs text-gray-500">Total Website</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-green-400" id="online-sites">0</div>
+                    <div class="text-xs text-gray-500">Sedang Online</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-purple-400">8</div>
+                    <div class="text-xs text-gray-500">Kategori</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Grid Kategori dengan Deskripsi -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            
+            <!-- GatzFilm (Movie Bioskop) -->
+            <div class="card p-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
+                                <i class="fas fa-film text-orange-400 text-xl"></i>
+                            </span>
+                            <h2 class="text-xl font-bold text-orange-400">GatzFilm</h2>
+                        </div>
+                        <p class="text-xs text-gray-400">Movie & Bioskop Terbaru</p>
+                    </div>
+                    <span class="bg-orange-500/20 text-orange-400 text-xs px-3 py-1 rounded-full">2 Situs</span>
+                </div>
+                <p class="text-xs text-gray-500 mb-3 italic">Akses film bioskop terbaru dengan kualitas terbaik</p>
+                <div class="space-y-2">
+                    <a href="https://gatzfilm.zone.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="gatzfilm.zone.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-gatzfilm.zone.id"></span>
+                            <span class="font-medium truncate">gatzfilm.zone.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://tv1-gatzfilm.zone.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="tv1-gatzfilm.zone.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-tv1-gatzfilm.zone.id"></span>
+                            <span class="font-medium truncate">tv1-gatzfilm.zone.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Drama Asia -->
+            <div class="card p-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center">
+                                <i class="fas fa-heart text-red-400 text-xl"></i>
+                            </span>
+                            <h2 class="text-xl font-bold text-red-400">Drama Asia</h2>
+                        </div>
+                        <p class="text-xs text-gray-400">Korea, China, Japan, Thailand</p>
+                    </div>
+                    <span class="bg-red-500/20 text-red-400 text-xs px-3 py-1 rounded-full">1 Situs</span>
+                </div>
+                <p class="text-xs text-gray-500 mb-3 italic">Koleksi drama Asia dengan subtitle Indonesia</p>
+                <div class="space-y-2">
+                    <a href="https://gatzdrama.agatz.my.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="gatzdrama.agatz.my.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-gatzdrama.agatz.my.id"></span>
+                            <span class="font-medium truncate">gatzdrama.agatz.my.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Web Komik -->
+            <div class="card p-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center">
+                                <i class="fas fa-book-open text-green-400 text-xl"></i>
+                            </span>
+                            <h2 class="text-xl font-bold text-green-400">Komik</h2>
+                        </div>
+                        <p class="text-xs text-gray-400">Manga, Manhwa, Manhua</p>
+                    </div>
+                    <span class="bg-green-500/20 text-green-400 text-xs px-3 py-1 rounded-full">3 Situs</span>
+                </div>
+                <p class="text-xs text-gray-500 mb-3 italic">Baca komik favoritmu dengan update tercepat</p>
+                <div class="space-y-2">
+                    <a href="https://mangatz.xyz" target="_blank" rel="noopener noreferrer" class="link-item" data-website="mangatz.xyz">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-mangatz.xyz"></span>
+                            <span class="font-medium truncate">mangatz.xyz</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://mangatz.web.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="mangatz.web.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-mangatz.web.id"></span>
+                            <span class="font-medium truncate">mangatz.web.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://mangatz.biz.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="mangatz.biz.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-mangatz.biz.id"></span>
+                            <span class="font-medium truncate">mangatz.biz.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Web Anime -->
+            <div class="card p-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                                <i class="fas fa-tv text-blue-400 text-xl"></i>
+                            </span>
+                            <h2 class="text-xl font-bold text-blue-400">Anime</h2>
+                        </div>
+                        <p class="text-xs text-gray-400">Streaming Anime Sub Indo</p>
+                    </div>
+                    <span class="bg-blue-500/20 text-blue-400 text-xs px-3 py-1 rounded-full">2 Situs</span>
+                </div>
+                <p class="text-xs text-gray-500 mb-3 italic">Nonton anime terbaru dan terlengkap</p>
+                <div class="space-y-2">
+                    <a href="https://gatznime.my.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="gatznime.my.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-gatznime.my.id"></span>
+                            <span class="font-medium truncate">gatznime.my.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://v1.gatznime.my.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="v1.gatznime.my.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-v1.gatznime.my.id"></span>
+                            <span class="font-medium truncate">v1.gatznime.my.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Web Donghua -->
+            <div class="card p-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center">
+                                <i class="fas fa-dragon text-yellow-400 text-xl"></i>
+                            </span>
+                            <h2 class="text-xl font-bold text-yellow-400">Donghua</h2>
+                        </div>
+                        <p class="text-xs text-gray-400">Animasi China Sub Indo</p>
+                    </div>
+                    <span class="bg-yellow-500/20 text-yellow-400 text-xs px-3 py-1 rounded-full">1 Situs</span>
+                </div>
+                <p class="text-xs text-gray-500 mb-3 italic">Rekomendasi Donghua terbaik pilihan</p>
+                <div class="space-y-2">
+                    <a href="https://gatzhua.agatz.my.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="gatzhua.agatz.my.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-gatzhua.agatz.my.id"></span>
+                            <span class="font-medium truncate">gatzhua.agatz.my.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hentai & JAV -->
+            <div class="card p-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center">
+                                <i class="fas fa-heart text-pink-400 text-xl"></i>
+                            </span>
+                            <h2 class="text-xl font-bold text-pink-400">Hentai & JAV</h2>
+                        </div>
+                        <p class="text-xs text-gray-400">Anime Dewasa & JAV</p>
+                    </div>
+                    <span class="bg-pink-500/20 text-pink-400 text-xs px-3 py-1 rounded-full">1 Situs</span>
+                </div>
+                <p class="text-xs text-gray-500 mb-3 italic">Koleksi lengkap untuk 18+</p>
+                <div class="space-y-2">
+                    <a href="https://gatzpoi.my.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="gatzpoi.my.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-gatzpoi.my.id"></span>
+                            <span class="font-medium truncate">gatzpoi.my.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Komik Doujin -->
+            <div class="card p-6" data-aos="fade-up" data-aos-delay="700">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                                <i class="fas fa-user-secret text-purple-400 text-xl"></i>
+                            </span>
+                            <h2 class="text-xl font-bold text-purple-400">Doujin</h2>
+                        </div>
+                        <p class="text-xs text-gray-400">Komik Doujin Jepang</p>
+                    </div>
+                    <span class="bg-purple-500/20 text-purple-400 text-xs px-3 py-1 rounded-full">1 Situs</span>
+                </div>
+                <p class="text-xs text-gray-500 mb-3 italic">Koleksi doujin dari berbagai circle</p>
+                <div class="space-y-2">
+                    <a href="https://gatzdoujin.agatz.my.id" target="_blank" rel="noopener noreferrer" class="link-item" data-website="gatzdoujin.agatz.my.id">
+                        <div class="flex items-center flex-1">
+                            <span class="status-indicator" id="status-gatzdoujin.agatz.my.id"></span>
+                            <span class="font-medium truncate">gatzdoujin.agatz.my.id</span>
+                        </div>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Contact Owner dengan Fitur Request -->
+            <div class="card p-6 text-center flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="800">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 p-[3px] mb-4">
+                    <div class="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
+                        <i class="fas fa-headset text-cyan-400 text-3xl"></i>
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold text-cyan-400 mb-2">Butuh Bantuan?</h2>
+                <p class="text-sm text-gray-400 mb-4">
+                    Request website baru atau lapor masalah<br>
+                    <span class="text-xs">Respon cepat via WhatsApp</span>
+                </p>
+                <a href="https://wa.me/6283839531800?text=Halo%20AgatZ%2C%20saya%20mau%20request%20website..." 
+                   target="_blank" 
+                   class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 px-8 rounded-xl transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl hover:scale-105">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span class="font-semibold">Chat Owner</span>
+                </a>
+                
+                <!-- Info Status -->
+                <div class="mt-6 w-full pt-4 border-t border-gray-800">
+                    <div class="flex items-center justify-between text-xs text-gray-500">
+                        <div class="tooltip">
+                            <i class="fas fa-sync-alt mr-1"></i> Auto Update
+                            <span class="tooltiptext">Status website diperbarui setiap 5 menit</span>
+                        </div>
+                        <div class="tooltip">
+                            <i class="fas fa-clock mr-1"></i> <span id="last-updated">Memuat...</span>
+                            <span class="tooltiptext">Terakhir dicek</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer dengan Informasi Tambahan -->
+        <footer class="mt-16 pt-8 border-t border-gray-800">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-cyan-400 font-bold mb-3">AgatZ List</h3>
+                    <p class="text-sm text-gray-500">
+                        Portal akses terpusat untuk semua website hiburan favoritmu. 
+                        Dengan status real-time dan update otomatis.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-gray-400 font-bold mb-3">Fitur</h3>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Cek Status Real-time</li>
+                        <li><i class="fas fa-bolt text-yellow-400 mr-2"></i>Akses Cepat ke Website</li>
+                        <li><i class="fas fa-sync-alt text-blue-400 mr-2"></i>Update Setiap 5 Menit</li>
+                        <li><i class="fas fa-mobile-alt text-purple-400 mr-2"></i>Mobile Friendly</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-gray-400 font-bold mb-3">Statistik</h3>
+                    <div class="text-sm text-gray-500 space-y-2">
+                        <div class="flex justify-center md:justify-between">
+                            <span>Total Website:</span>
+                            <span class="text-white font-bold" id="footer-total">0</span>
+                        </div>
+                        <div class="flex justify-center md:justify-between">
+                            <span>Online:</span>
+                            <span class="text-green-400 font-bold" id="footer-online">0</span>
+                        </div>
+                        <div class="flex justify-center md:justify-between">
+                            <span>Offline:</span>
+                            <span class="text-red-400 font-bold" id="footer-offline">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-gray-600 text-xs mt-8">
+                &copy; 2025 AgatZ List. All rights reserved. | Made with <i class="fas fa-heart text-red-500"></i> for better browsing experience
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Inisialisasi AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+        
+        // Fungsi Pengecekan Website dengan improved reliability
+        document.addEventListener('DOMContentLoaded', function() {
+            const websiteLinks = document.querySelectorAll('[data-website]');
+            const totalSites = websiteLinks.length;
+            
+            // Update total website di semua tempat
+            document.getElementById('total-sites').textContent = totalSites;
+            document.getElementById('footer-total').textContent = totalSites;
+            
+            // Cache untuk menyimpan hasil pengecekan
+            const statusCache = new Map();
+            let onlineCount = 0;
+            
+            async function checkWebsiteStatus(url, elementId) {
+                const statusElement = document.getElementById(elementId);
+                if (!statusElement) return false;
+                
+                // Tampilkan loading
+                statusElement.className = 'status-indicator skeleton';
+                
+                try {
+                    // Gunakan multiple methods untuk mengecek status
+                    const checkMethods = [
+                        checkWithFetch(url),
+                        checkWithImage(url),
+                        checkWithPing(url)
+                    ];
+                    
+                    // Race condition - method mana yang lebih cepat berhasil
+                    const result = await Promise.race(checkMethods.map(p => 
+                        p.then(() => true).catch(() => false)
+                    ));
+                    
+                    if (result) {
+                        statusElement.className = 'status-indicator status-active';
+                        return true;
+                    } else {
+                        statusElement.className = 'status-indicator status-inactive';
+                        return false;
+                    }
+                } catch (error) {
+                    statusElement.className = 'status-indicator status-inactive';
+                    return false;
+                }
+            }
+            
+            // Method 1: Fetch dengan HEAD request
+            async function checkWithFetch(url) {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+                
+                try {
+                    const response = await fetch(`https://${url}`, {
+                        method: 'HEAD',
+                        mode: 'no-cors',
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    return true;
+                } catch {
+                    clearTimeout(timeoutId);
+                    throw new Error('Fetch failed');
+                }
+            }
+            
+            // Method 2: Image load test
+            async function checkWithImage(url) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    const timeout = setTimeout(() => {
+                        img.src = '';
+                        reject(new Error('Image timeout'));
+                    }, 3000);
+                    
+                    img.onload = () => {
+                        clearTimeout(timeout);
+                        resolve(true);
+                    };
+                    
+                    img.onerror = () => {
+                        clearTimeout(timeout);
+                        // Favicon not found is okay, site might still be up
+                        resolve(true);
+                    };
+                    
+                    img.src = `https://${url}/favicon.ico?${Date.now()}`;
+                });
+            }
+            
+            // Method 3: DNS + ping test sederhana
+            async function checkWithPing(url) {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.onload = () => resolve(true);
+                    img.onerror = () => resolve(false);
+                    img.src = `https://${url}/apple-touch-icon.png?${Date.now()}`;
+                    
+                    setTimeout(() => resolve(false), 3000);
+                });
+            }
+            
+            // Update semua status
+            async function updateAllStatus() {
+                onlineCount = 0;
+                
+                for (const link of websiteLinks) {
+                    const website = link.getAttribute('data-website');
+                    const elementId = `status-${website}`;
+                    
+                    const isOnline = await checkWebsiteStatus(website, elementId);
+                    if (isOnline) onlineCount++;
+                    
+                    // Delay antar request untuk menghindari rate limiting
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+                
+                // Update UI
+                document.getElementById('online-sites').textContent = onlineCount;
+                document.getElementById('footer-online').textContent = onlineCount;
+                document.getElementById('footer-offline').textContent = totalSites - onlineCount;
+                
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('id-ID', { 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                document.getElementById('last-updated').textContent = timeStr;
+            }
+            
+            // First update
+            updateAllStatus();
+            
+            // Auto update setiap 5 menit
+            setInterval(updateAllStatus, 5 * 60 * 1000);
+            
+            // Event listener untuk klik link
+            websiteLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const website = this.getAttribute('data-website');
+                    const statusElement = document.getElementById(`status-${website}`);
+                    
+                    // Tambah efek visual saat diklik
+                    statusElement.style.transform = 'scale(1.5)';
+                    setTimeout(() => {
+                        statusElement.style.transform = 'scale(1)';
+                    }, 200);
+                    
+                    // Catat statistik klik (bisa dikembangkan lebih lanjut)
+                    console.log(`Mengakses: ${website}`);
+                });
             });
             
-            await Promise.race([fetchPromise, timeoutPromise]);
-            
-            statusElement.classList.remove('pulse', 'status-inactive');
-            statusElement.classList.add('status-active');
-            return true;
-          } catch (error) {
-            // Jika metode pertama gagal, coba metode alternatif
-            try {
-              const img = new Image();
-              img.src = `https://${url}/favicon.ico?${Date.now()}`;
-              
-              await new Promise((resolve, reject) => {
-                img.onload = resolve;
-                img.onerror = reject;
-                setTimeout(() => reject(new Error('Timeout')), 3000);
-              });
-              
-              statusElement.classList.remove('pulse', 'status-inactive');
-              statusElement.classList.add('status-active');
-              return true;
-            } catch (err) {
-              statusElement.classList.remove('pulse', 'status-active');
-              statusElement.classList.add('status-inactive');
-              return false;
-            }
-          }
-        }
-        
-        async function checkAllWebsites() {
-          let onlineCount = 0;
-          
-          for (const link of websiteLinks) {
-            const website = link.getAttribute('data-website');
-            const elementId = `status-${website}`;
-            const isOnline = await checkWebsiteStatus(website, elementId);
-            
-            if (isOnline) onlineCount++;
-            await new Promise(resolve => setTimeout(resolve, 1000));
-          }
-          
-          document.getElementById('online-count').textContent = onlineCount;
-          const now = new Date();
-          document.getElementById('last-updated').textContent = `Diperbarui: ${now.toLocaleTimeString()}`;
-        }
-        
-        checkAllWebsites();
-        setInterval(checkAllWebsites, 5 * 60 * 1000);
-        
-        websiteLinks.forEach(link => {
-          link.addEventListener('click', function(e) {
-            const website = this.getAttribute('data-website');
-            const statusElement = document.getElementById(`status-${website}`);
-            statusElement.classList.remove('status-active', 'status-inactive');
-            statusElement.classList.add('pulse');
-          });
+            // Smooth scroll untuk internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
         });
-      });
     </script>
-  </body>
+</body>
 </html>
